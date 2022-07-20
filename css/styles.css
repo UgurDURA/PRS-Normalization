@@ -1,0 +1,283 @@
+body{
+  font-family: 'Rajdhani', sans-serif;
+  }
+  
+  
+  
+  
+  h1,h2,h3,h4,h5,h6
+  {
+    font-family: 'Rajdhani', sans-serif;
+  }
+  h2{
+  
+    font-size: 3rem;
+    line-height: 1.5;
+  
+  
+  }
+  h3{
+
+  
+    font-size:1.5rem;
+    font-family: 'Rajdhani-Bold';
+  }
+  p{
+    color:#8f8f8f;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: lighter;
+    font-size: 1rem;
+  }
+  .big-heading{
+    font-family: 'Montserrat', sans-serif;
+     font-size:3.5rem;
+      line-height: 1.5;
+  }
+
+  .big-header{
+    font-family: 'Montserrat', sans-serif;
+     font-size:2.5rem;
+      line-height: 1.5;
+  }
+  
+  .container-fluid{
+    padding: 3% 15% 7%;
+  }
+  
+  #title{
+    background-color:#EC7063   ;
+    color:#fff;
+  }
+  #features{
+    padding:15% 0 15% 0;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Navigation Bar */
+  
+  .navbar{
+    padding: 0 0 0.5rem;
+  }
+  
+  .navbar-brand{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-item{
+    padding: 0 18px;
+  }
+  .nav-link{
+    font-size: 1.2rem;
+    font-family: 'Rajdhani', sans-serif;
+  
+  
+  }
+  
+  /* Download Buttons */
+  
+  .download-buttonApple{
+    margin:5% 3% 5% 0;
+  }
+  .download-buttonGoogle{
+  margin:5% 3% 5% 0;
+  }
+  
+  /* Tittle Image */
+  
+  .title-img{
+    width: 30%;
+    position: absolute;
+    right: 5%;
+  
+  
+  
+  }
+  
+  /* favicons */
+  .icon-features{
+    color: #EC7063 ;
+    padding-bottom: 1.5rem;
+  
+  
+  }
+  
+  .icon-features:hover{
+   color:#f80a0a;
+  }
+  
+  /* Features */
+  
+  .feature-box{
+   text-align: center;
+  }
+  #features{
+      padding: 7% 5%;
+  }
+  
+  
+  /* Testimonial Section */
+  
+  #testimonials{
+  
+    text-align: center;
+    background-color: #ef8172;
+    color: #fff;
+  }
+  
+  .testimonial-image{
+    width: 20%;
+    border-radius: 100%;
+    margin: 20px;
+  }
+  
+  #press{
+    background-color: #ef8172;
+    text-align: center;
+    padding-bottom: 3%;
+  
+  }
+  
+  .press-logo{
+    width: 15%;
+    margin: 20px 20px 50px;
+  }
+  
+  .carousel-item{
+    padding: 7% 15%;
+  }
+  
+  /* Pricing */
+  
+  #pricing{
+    padding:100px;
+    text-align: center;
+  }
+  
+  .pricing-columnn{
+    padding: 3% 2%;
+  }
+  
+  @media (max-width:1028px)
+  {
+  
+  #title{
+    text-align: center;
+  }
+    .title-img{
+      position: static;
+      transform: rotate(0);
+      top:100px;
+    }
+  
+  }
+  
+  
+  /* Footer */
+  #footer{
+    padding: 7% 15%;
+    text-align: center;
+    background-color: #fff;
+  }
+  
+  #cta
+  {
+  
+    background-color: #ff4c68;
+    text-align: center;
+    padding: 7% 15%
+  
+  
+  }
+  
+  .footer-text
+  {
+      font-family: 'Montserrat-Black',sans-serif;
+      color:#fff;
+      font-size: 3.5rem;
+      line-height: 1.5;
+  
+  }
+  .social-icon{
+    margin:20px 10px;
+    color:black;
+  
+  }
+  .social-icon:hover
+  {
+    color:#ff4c68;
+  }
+
+  /* Upload Section */
+
+  #uploadHeader
+  {
+    padding: 0% 0%;
+    text-align: left;
+    background-color: #EC7063;
+    color: #fff;
+  }
+
+  #upload
+  {
+    padding: 7% 15%;
+    text-align: center;
+    background-color: #EC7063;
+    color: #fff;
+  }
+
+  .upload-img{
+    width: 20%;
+    position: absolute;
+    right: 5%;
+  
+  }
+
+  .upload-txt
+  {
+    text-align:inherit
+
+  }
+
+
+  #calculateHeader
+  {
+    padding: 0% 0%;
+    text-align: left;
+    background-color: #fff;
+    color: #EC7063;
+  }
+
+ #calculate
+ {
+  padding: 7% 15%;
+    text-align: center;
+    background-color: #fff;
+    color: #EC7063;
+ }
+
+ #resultHeader
+ {
+   padding: 0% 0%;
+   text-align: left;
+   background-color: #EC7063;
+   color: #fff;
+ }
+
+ #result
+ {
+   padding: 7% 15%;
+   text-align: center;
+   background-color: #EC7063;
+   color: #fff;
+ }
+
+
+
+ 
+
+ 
+

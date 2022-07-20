@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>PGS Calculator</title>
+
+
+<!--PyScript-->
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+  <!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <!-- GoogleFonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap" rel="stylesheet">
+
+
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/1bc45e4475.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles.css">
+
+   <!-- JavaScript Bokeh -->
+
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.js"></script>
+  <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.2.js"></script>
+  <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.2.min.js"></script>
+  <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.2.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/@holoviz/panel@0.13.0/dist/panel.min.js"></script>
+
+  <script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
+
+  <!-- JavaScript-->
+
+</head>
+
+<body>
+    <section id = "title">
+        <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+
+            <a class = "navbar-brand" href="">PGS Calculator</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+        
+              <div class = "collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav  ms-auto">
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="">Contact</a>
+                    </li>
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="">Pricing</a>
+                    </li>
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="">Calculate</a>
+                    </li>
+            
+                </ul>
+        
+              </div>
+        
+        </nav>
+        <h1>
+            <py-script>
+                print("Hello World")
+            </py-script>
+        </h1>
+
+
+      <!-- Title -->
+      <div class="row">
+
+
+        <div class="col-lg-6 col-md-12 col-sm-12">
+
+          <h1 class="big-heading">Polygenic Risk Score Analysis</h1>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO"><button type="button" class="btn btn-dark btn-lg download-buttonApple"><i class="fab fa-apple"></i> Download</button></a>
+         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO"><button type="button" class="btn btn-outline-light btn-lg download-buttonGoogle"><i class="fab fa-google-play"></i> Download</button></a>
+
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <img class=title-img src="Solaris.png" alt="Solaris">
+        </div>
+
+      </div>
+
+
+    </div>
+    </section>
+
+<section id = "features">
+
+ 
+
+  <div class = "row">
+
+  <div class = "feature-box col-lg-4 col-md-4 col-sm-12">
+    <i class="fa-solid fa-file-arrow-up fa-4x fa-fw icon-features"></i>
+    <h3>Upload your Sample</h3>
+    <p>Start with uploading your patient VCF file</p>
+  </div>
+
+  <div class = "feature-box col-lg-4 col-md-4 col-sm-12">
+    <i class="fa-solid fa-wave-square fa-4x fa-fw icon-features"></i>
+    <h3>Calculate</h3>
+    <p>Wait for us to calculate your polygenic risk score</p>
+  </div> 
+
+  <div class = "feature-box col-lg-4 col-md-4 col-sm-12">
+    <i class="fa-solid fa-chart-line fa-4x fa-fw icon-features"></i>
+    <h3>Analyze</h3>
+    <p>Analyze your scores with graphs for each patient</p>
+  </div>
+
+  </div>
+  
+
+
+</section>
+
+<py-env>
+  - bokeh
+  - numpy
+  - panel
+  - pandas
+  - bokeh
+  - matplotlib
+  - scipy
+    </py-env>
+
+<section id="uploadHeader">
+
+  <div class="row">
+
+
+    <div class="col-lg-6 col-md-12 col-sm-12">
+
+      <h1 class="big-header">Upload Your Sample</h1>
+      
+    </div>
+  </div>
+
+
+</section>
+
+<section id = "upload">
+
+  <div class="col-lg-6 col-md-12 col-sm-12">
+  </div>
+</div>
+
+
+  <div class = "row">
+
+  <!-- <div class = "feature-box col-lg-4 col-md-4 col-sm-12">
+    <input type="file" id="input">
+  </div> -->
+  <div id = "fileInput"></div>
+
+    <!-- <div class = "col-lg-4 col-md-4 col-sm-12">
+      <a id="downloadLink" download>Upload</a>
+    </div> -->
+
+    <div class = "feature-box col-lg-4 col-md-4 col-sm-12">
+  <i class="fa-solid fa-file-import fa-10x fa-fw upload-img"></i>
+</div>
+  </div>
+
+
+
+
+
+  <!-- <script>
+
+downloadLink.style.display = 'none'
+  
+  </script> -->
+
+
+<!-- <script>
+// const pako = require('pako');
+var inputElement = document.getElementById("input");
+var reader = new FileReader();
+var downloadLink = document.getElementById('downloadLink');
+
+reader.onloadend = function(){
+  console.log(reader.result);
+  downloadLink.style.display = 'block'
+  // var result = pako.inflate(event.target.result, { to: 'string' });
+  var length = 10000;
+  // var myString = reader.readAsArrayBuffer(read.result);
+  var myString = reader.result
+  var myTruncatedString = myString.substring(0,length);
+  document.getElementsByName('output')[0].value= myTruncatedString ;
+}
+
+inputElement.addEventListener("change", handleFiles, false);
+function handleFiles() {
+  var fileSelected = this.files[0]; /* now you can work with the file list */
+  reader.readAsBinaryString(fileSelected);
+  downloadLink.href = window.URL.createObjectURL(fileSelected);
+}
+
+</script> -->
+
+
+<!-- <div class = "feature-box col-lg-4 col-md-4 col-sm-12" style=" padding-top: 50px; overflow: scroll; width: 400px; height: 300px;" >
+  <textarea name = 'output' id="txtComment" style="height: 500px; width: 500px; background-color:#e35343;color:#fff; padding-top: 50px; "  ></textarea>
+</div> -->
+
+<div id = "table"></div>
+
+
+  </div>
+</section>
+
+
+<section id="calculateHeader">
+
+  <div class="row">
+
+
+    <div class="col-lg-6 col-md-12 col-sm-12">
+
+      <h1 class="big-header">Calculate</h1>
+      
+    </div>
+  </div>
+
+
+</section>
+
+
+<section id = "calculate">
+
+  <div id = "buttonCalculate"></div>
+
+
+
+</section>
+
+
+<section id="resultHeader">
+
+  <div class="row">
+
+
+    <div class="col-lg-6 col-md-12 col-sm-12">
+
+      <h1 class="big-header">Analyze</h1>
+      
+    </div>
+  </div>
+
+
+</section>
+
+
+<section id = "result">
+
+  <div id = "tableResult"></div>
+ 
+</section>
+ 
+
+  <!-- Call to Action -->
+
+
+  <!-- Footer -->
+
+  <footer id="footer">
+<i class="social-icon fab fa-facebook-f"></i>
+<i class="social-icon fab fa-twitter"></i>
+  <a class="footer-link" href="https://www.instagram.com/ugur_dura"><i class="social-icon fab fa-instagram"></i></a>
+
+<a href="mailto:ugur_dura@hotmail.com"><i class="social-icon fas fa-envelope"></i></a>
+
+
+
+    <p>© Copyright 2022 PGS Calculator <br> Ugur DURA </p>
+
+
+  </footer>
+
+
+<py-script>
+
+  import asyncio
+  import panel as pn
+  import pandas as pd
+  import numpy as np
+  import scipy.integrate
+  import matplotlib.pyplot as plt
+  plt.style.use('fivethirtyeight')
+  from panel.io.pyodide import show
+
+
+  file_input = pn.widgets.FileInput(accept = ".txt", width = 180)
+  button_upload = pn.widgets.Button(name = 'Upload', button_type = 'primary', width = 100)
+  row = pn.Row(file_input, button_upload, height = 75)
+  button_calculate = pn.widgets.Button(name = 'Calculate', button_type = 'primary', width = 200)
+  
+  
+  table = pn.widgets.Tabulator(pagination="remote", page_size = 10)
+  table2 = pn.widgets.Tabulator(pagination="remote", page_size = 10)
+  document.getElementById("table").style.display = 'none'
+  document.getElementById("tableResult").style.display = 'none'
+
+  
+  def calculate_ZScore(event):
+    if file_input.value is not None:
+      df = pd.read_csv(io.BytesIO(file_input.value), sep=",")
+
+      scores = df.loc[:,'PGS000018']
+      scores_mean = scores.mean()
+      scores_Std = scores.std()
+      Z_Scores_Data = np.empty(shape=[0])
+      for i in range(scores.size):
+        result = (scores[i]-scores_mean)/scores_Std
+        result = round(result, 2)
+        print("No: ",i, " Z-Score : ", result)
+        Z_Scores_Data = np.append(Z_Scores_Data,result)
+      Z_Scores = pd.DataFrame(Z_Scores_Data, columns= ["Z-Scores"])
+      concResult = df.merge(Z_Scores, how='outer', left_index=True, right_index=True )
+
+      x = []
+      y = []
+      i = -3
+
+      e = 2.718281828459
+      pi = 3.14159265
+      c = 1/((2*pi)**0.5)
+
+      while i<3:
+          i += 0.01
+          x.append(round(i,3))
+
+      for a in x:
+
+          expo = (-a**2)/2
+          distro = c*(e**expo)
+          y.append(distro)
+
+      negative_infinity = -float('inf')
+
+      z = 0 
+
+      def f(x):
+          c = 1/((2*pi)**0.5)
+          exponent = (-x**2)/2
+          standart_normal_curve = c*(e**exponent)
+          return standart_normal_curve
+
+      probability, error = scipy.integrate.quad(f, negative_infinity, z)
+
+      z_table = []
+
+      for row in x:
+          probability, error = scipy.integrate.quad(f, negative_infinity, row)
+          z_table.append([row, round(probability, 5)])
+          print(row, round(probability, 5))
+
+
+      ## Sample Evaluation
+
+      def getProbabilityFromZ_Sample(PGS, sampleID, Z):
+          percentile = 0
+          
+          for row in z_table:
+              if float(row[0] == Z):
+                  probability = row[1]
+                  percentile = round(float(probability)*100,2)
+                  print(sampleID, " has probability of ", percentile, "% to have ", PGS )
+                  break
+          return percentile
+      Percentiles= np.empty(shape=[0])
+      for i in range(concResult['Z-Scores'].size):
+          Percentiles = np.append(Percentiles, getProbabilityFromZ_Sample(concResult.columns[1], concResult["sample"].values[i], concResult["Z-Scores"].values[i]))
+      Percentiles = pd.DataFrame(Percentiles, columns= ["Probability"])
+      PercentileResults = concResult.merge(Percentiles, how='outer', left_index=True, right_index=True )
+      table2.value = PercentileResults 
+      document.getElementById('tableResult').style.display = 'block'
+
+  def process_file(event):
+    if file_input.value is not None:
+      df = pd.read_csv(io.BytesIO(file_input.value), sep=",")
+  
+      table.value = df
+      document.getElementById('table').style.display = 'block'
+  
+      
+
+
+
+
+  button_upload.on_click(process_file)
+  button_calculate.on_click(calculate_ZScore)
+
+
+
+  await show(row, 'fileInput')
+  await show(table, 'table')
+  await show(table2, 'tableResult')
+  await show(button_calculate, 'buttonCalculate')
+      
+  
+
+</py-script>
+
+
+
+
+
+
+
+</body>
+</html>
