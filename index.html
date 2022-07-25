@@ -47,13 +47,13 @@
               <div class = "collapse navbar-collapse" id="navbarToggler">
                 <ul class="navbar-nav  ms-auto">
                     <li class = "nav-item">
-                        <a class = "nav-link" href="">Contact</a>
+                        <a class = "nav-link" href="#footer">Contact</a>
                     </li>
                     <li class = "nav-item">
                         <a class = "nav-link" href="">Pricing</a>
                     </li>
                     <li class = "nav-item">
-                        <a class = "nav-link" href="">Calculate</a>
+                        <a class = "nav-link" href="#uploadHeader">Calculate</a>
                     </li>
             
                 </ul>
@@ -61,11 +61,6 @@
               </div>
         
         </nav>
-        <h1>
-            <py-script>
-                print("Hello World")
-            </py-script>
-        </h1>
 
 
       <!-- Title -->
@@ -75,8 +70,7 @@
         <div class="col-lg-6 col-md-12 col-sm-12">
 
           <h1 class="big-heading">Polygenic Risk Score Analysis</h1>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO"><button type="button" class="btn btn-dark btn-lg download-buttonApple"><i class="fab fa-apple"></i> Download</button></a>
-         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO"><button type="button" class="btn btn-outline-light btn-lg download-buttonGoogle"><i class="fab fa-google-play"></i> Download</button></a>
+          <a href="#uploadHeader"><button type="button" class="btn btn-dark btn-lg download-buttonApple">Start to Calculate</button></a>
 
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12">
@@ -260,6 +254,7 @@ function handleFiles() {
 <section id = "result">
 
   <div id = "tableResult"></div>
+  <div id = "plot"></div>
  
 </section>
  
@@ -284,7 +279,7 @@ function handleFiles() {
   </footer>
 
 
-<py-script>
+<py-script output = "plot">
 
   import asyncio
   import panel as pn
@@ -381,6 +376,19 @@ function handleFiles() {
       PercentileResults = concResult.merge(Percentiles, how='outer', left_index=True, right_index=True )
       table2.value = PercentileResults 
       document.getElementById('tableResult').style.display = 'block'
+
+      patientIDs = PercentileResults.loc[:,'sample']
+      pgsResult = PercentileResults.loc[:,'Probability']
+
+      fig, ax = plt.subplots()
+      ax.scatter(patientIDs, pgsResult)
+      ax.set(xlabel='patient IDs', ylabel='Probabilities ',
+             title='PGS Results') 
+      pyscript.write("plot", fig)
+      fig
+
+
+
 
   def process_file(event):
     if file_input.value is not None:
